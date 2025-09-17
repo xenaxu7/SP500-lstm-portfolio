@@ -39,27 +39,6 @@ Or if you want the standalone version (great for Google Colab):
 python lstm_stock_selection_standalone.py
 ```
 
-## 🧩 Project Structure
-
-```
-sp500-lstm-portfolio/
-├── 📝 README.md                # You are here!
-├── 🚀 main.py                  # Main orchestrator
-├── 🎯 lstm_stock_selection_standalone.py  # All-in-one version
-├── 📦 requirements.txt         # Dependencies
-│
-├── 🧠 src/                    # The brains
-│   ├── config.py              # All settings in one place
-│   ├── data_loader.py         # Data fetching wizardry
-│   ├── lstm_model.py          # Deep learning magic
-│   ├── portfolio.py           # Portfolio construction
-│   ├── evaluation.py          # Performance metrics
-│   └── visualization.py       # Pretty charts
-│
-├── 💾 data/                   # Where data lives
-├── 🤖 models/                 # Trained models
-└── 📊 results/                # Output & visualizations
-```
 
 ## 🎓 The Tech Behind It
 
