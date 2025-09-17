@@ -98,7 +98,6 @@ Love talking about data, markets, or strategy games? Let's chat!
 
 - [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) - Best LSTM explanation ever!
 - [PyPortfolioOpt Docs](https://pyportfolioopt.readthedocs.io/) - Portfolio optimization made easy
-- My STAT302 & ECO220 courses at UTSC - Where it all started!
 
 ---
 
