@@ -83,15 +83,6 @@ As someone coming from Stats & Econ, this project taught me:
 - **Risk Management**: Returns are only half the story - volatility matters!
 - **Deep Learning Power**: LSTMs can capture patterns I'd never spot manually
 
-## 🚀 Future Improvements
-
-My to-do list (when I'm not studying for exams!):
-- [ ] Add sentiment analysis from financial news
-- [ ] Implement transformer models (BERT for finance!)
-- [ ] Include fundamental analysis features
-- [ ] Real-time trading signals
-- [ ] Web dashboard for live monitoring
-- [ ] Multi-factor models combining technical + fundamental data
 
 ## 🤝 Let's Connect!
 
