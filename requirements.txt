@@ -1,0 +1,29 @@
+# Core Data Science Libraries
+numpy>=1.21.0
+pandas>=1.3.0
+matplotlib>=3.4.0
+scikit-learn>=1.0.0
+
+# Deep Learning
+tensorflow>=2.8.0
+keras>=2.8.0
+
+# Financial Data & Analysis
+yfinance>=0.2.18
+PyPortfolioOpt>=1.5.0
+
+# Additional Utilities
+python-dateutil>=2.8.0
+requests>=2.28.0
+lxml>=4.9.0
+html5lib>=1.1
+
+# Jupyter Support (optional)
+jupyter>=1.0.0
+notebook>=6.4.0
+ipykernel>=6.15.0
+
+# Development Tools (optional)
+black>=22.0.0
+flake8>=4.0.0
+pytest>=7.0.0
