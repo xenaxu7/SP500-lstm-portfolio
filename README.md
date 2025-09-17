@@ -39,18 +39,6 @@ Or if you want the standalone version (great for Google Colab):
 python lstm_stock_selection_standalone.py
 ```
 
-## 📊 Performance Snapshot
-
-During my testing period (July 2023 - December 2024):
-
-| Strategy | Return | Sharpe Ratio | Max Drawdown |
-|----------|--------|--------------|--------------|
-| **🤖 LSTM Portfolio** | TBD% | TBD | -TBD% |
-| **📋 Thematic Selection** | TBD% | TBD | -TBD% |
-| **📈 S&P 500 Baseline** | TBD% | TBD | -TBD% |
-
-*Results vary based on market conditions and the alignment of stars* ⭐
-
 ## 🧩 Project Structure
 
 ```
