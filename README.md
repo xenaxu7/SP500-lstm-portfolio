@@ -1,114 +1,30 @@
-# 📈 S&P 500 LSTM Portfolio Selection
+# S&P 500 LSTM Portfolio Selection
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0%2B-orange)](https://www.tensorflow.org/)
-[![Status](https://img.shields.io/badge/Status-Active-success)](https://github.com/)
+Forecast next-period returns for every S&P 500 constituent with an LSTM, hold the top 30 equal-weighted, and test the result out of sample against SPY and a thematic stock list.
 
-> *Where Statistics meets Deep Learning meets Wall Street* 🚀
+## What it does
+1. **Data**: downloads 10 years of daily prices (2013-07-01 to 2023-06-30) for the current S&P 500 constituents with `yfinance`; tickers with too little history are dropped (430+ remain, about 1M price points). Missing data is handled before modelling.
+2. **Model**: one LSTM per stock on a 60-day sliding window of scaled prices: `LSTM(50) → LSTM(50) → Dense(25) → Dense(1)`, trained with Keras. Each model predicts the next price, converted to a predicted return.
+3. **Portfolio**: rank stocks by predicted return, take the top 30, equal weight.
+4. **Backtest**: 18 months out of sample (2023-07-01 to 2024-12-31). Metrics: annualized return, annualized volatility, Sharpe ratio (2% risk-free), maximum drawdown. Compared with SPY and with a 30-stock thematic portfolio.
 
-## 🎯 What's This About?
+## Results
+The script prints annualized return, annualized volatility, Sharpe ratio (2% risk-free) and maximum drawdown for the LSTM top-30 portfolio, the 30-stock thematic portfolio and SPY over the 18-month test window, and saves the comparison chart. A results table from the latest run will be added here.
 
-Hey there! As a Stats & Econ student at UTSC who loves data-driven decision making, I built this project to combine my passion for quantitative analysis with practical financial applications. This system uses **LSTM neural networks** to analyze **ALL 500+ stocks** in the S&P 500 and build optimized portfolios that (hopefully!) beat the market.
-
-Think of it as applying game theory to the stock market - but with deep learning doing the heavy lifting! 🧠
-
-## ✨ Cool Features
-
-- 🔍 **Complete Market Analysis**: Analyzes every single S&P 500 stock (not just a subset!)
-- 🤖 **Deep Learning Magic**: LSTM models predict future returns with time series analysis
-- 📊 **Risk Metrics Galore**: Sharpe ratio, Sortino ratio, maximum drawdown, and more
-- ⚡ **Real-time Data**: Fetches latest market data using yfinance
-- 🎨 **Beautiful Visualizations**: Performance charts that actually make sense
-
-## 🏃‍♀️ Quick Start
-
+## Run it
 ```bash
-# Clone this repo
-git clone https://github.com/xenaxu7/sp500-lstm-portfolio.git
-cd sp500-lstm-portfolio
-
-# Install dependencies
+git clone https://github.com/xenaxu7/SP500-lstm-portfolio.git
+cd SP500-lstm-portfolio
 pip install -r requirements.txt
-
-# Run the magic! ✨
 python main.py
 ```
+Training 430+ models takes a while on CPU; the script trains in batches and prints progress.
 
-Or if you want the standalone version (great for Google Colab):
-```python
-python lstm_stock_selection_standalone.py
-```
+## Limitations I know about
+- Each model is trained for 3 epochs to keep runtime manageable; more epochs and a validation split would give a fairer read of the LSTM.
+- A single prediction at the end of the training window drives the whole 18-month holding period; a rolling re-selection would be the natural next step.
+- Constituent list is the current index, so the universe has survivorship bias.
+- Equal weighting and no transaction costs.
 
-
-## 🎓 The Tech Behind It
-
-### LSTM Architecture
-```
-60 days of prices → LSTM(50) → LSTM(50) → Dense(25) → Price prediction
-```
-
-The model learns from 60 days of historical prices to predict the next move. It's like teaching the computer to recognize patterns that even seasoned traders might miss!
-
-### Why LSTM?
-Unlike traditional models, LSTMs can:
-- Remember long-term patterns (perfect for market cycles!)
-- Handle sequential data naturally
-- Capture complex non-linear relationships
-
-## 🎮 How It Works
-
-1. **Data Collection** 📥
-   - Downloads 10+ years of historical data for all S&P 500 stocks
-   - Cleans and preprocesses everything (missing data? handled!)
-
-2. **Model Training** 🏋️‍♀️
-   - Trains individual LSTM models for each stock
-   - Uses rolling windows for time series validation
-
-3. **Portfolio Construction** 🏗️
-   - Ranks stocks by predicted returns
-   - Selects top 30 performers
-   - Equal-weight allocation (keeping it simple!)
-
-4. **Performance Analysis** 📈
-   - Calculates risk-adjusted metrics
-   - Compares against benchmarks
-   - Creates beautiful visualizations
-
-## 💡 What I Learned
-
-As someone coming from Stats & Econ, this project taught me:
-- **Theory meets Practice**: Academic concepts actually work in real markets!
-- **Scale Matters**: Processing 500+ stocks is very different from toy datasets
-- **Risk Management**: Returns are only half the story - volatility matters!
-- **Deep Learning Power**: LSTMs can capture patterns I'd never spot manually
-
-
-## 🤝 Let's Connect!
-
-Love talking about data, markets, or strategy games? Let's chat!
-
-**Xena Xu**
-- 📧 Email: xenaxu7@gmail.com
-- 💼 LinkedIn: [linkedin.com/in/xena-xu](https://www.linkedin.com/in/xena-xu/)
-- 🐙 GitHub: [@xenaxu7](https://github.com/xenaxu7)
-- 📍 Toronto, ON 🍁
-
-## 📚 Resources & Inspiration
-
-- [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) - Best LSTM explanation ever!
-- [PyPortfolioOpt Docs](https://pyportfolioopt.readthedocs.io/) - Portfolio optimization made easy
-
----
-
-<p align="center">
-  <i>"In investing, what is comfortable is rarely profitable."</i> - Robert Arnott
-  <br>
-  <i>(But with LSTMs, we can at least make it more scientific!)</i> 🎯
-</p>
-
-<p align="center">
-  ⭐ If you found this helpful, consider giving it a star! ⭐
-  <br>
-  <sub>Built with 💜 and lots of ☕ by a UTSC student who should probably be studying for finals</sub>
-</p>
+## Stack
+Python, TensorFlow/Keras, pandas, NumPy, scikit-learn (scaling), yfinance, Matplotlib
