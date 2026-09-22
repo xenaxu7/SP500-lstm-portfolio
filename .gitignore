@@ -2,23 +2,21 @@
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
 
-# Data files
-*.csv
-*.h5
-*.pkl
-data/*.csv
-data/*.json
+# Downloaded prices (about 10 MB, rebuilt by backtest.py); constituents.csv is committed
+data/*.parquet
 
-# IDE
+# Run logs and smoke-test output
+logs/
+results_smoke/
+
+# IDE / OS
 .vscode/
 .idea/
 .DS_Store
 
-# Virtual environment
-venv/
-env/
-
-# Results
-*.png
-*.jpg
+# alternative-universe or smoke-test outputs
+results_*/

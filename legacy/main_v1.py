@@ -1,3 +1,4 @@
+# v1 of this project, kept for reference. Needs PyPortfolioOpt (pip install PyPortfolioOpt), which is not in requirements.txt.
 # S&P 500 Stock Selection using LSTM with Equal Weighting
 # Analyzing ALL S&P 500 stocks, not just 50
 
